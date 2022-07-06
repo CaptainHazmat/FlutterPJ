@@ -1,31 +1,67 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(MyFuckinApp());
+void main() => runApp(MaterialApp(home: UserPanel()
+));
 
-class MyFuckinApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(primarySwatch: Colors.amber),
-      home: Scaffold(
-        appBar: AppBar(title: Text('Obi-Wan', style: TextStyle(
-          fontFamily: 'ComicS'
-        ),),
-        centerTitle: true,
-        ),
-        body: Center(
-          child: Text('Hello there', style: TextStyle(
-              fontSize: 16,
-              color: Colors.black,
-              fontFamily: 'ComicS'
-          )),
-        ),
-        floatingActionButton: FloatingActionButton(
-            child: Text('Kenobi', style: TextStyle( color: Colors.white)),
-            backgroundColor: Colors.deepOrange,
-          onPressed: () { print('General Kenobi'); },
-        ),
-    ));
-  }
+class UserPanel extends StatefulWidget {
+  const UserPanel({Key? key}) : super(key: key);
 
+  State<UserPanel> createState() => _UserPanelState();
 }
+
+class _UserPanelState extends State<UserPanel> {
+
+  int count = 0; // var
+
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        title: Text('BOOM BEACH'),
+        centerTitle: true,
+        backgroundColor: Colors.black45,
+      ),
+      body: SafeArea(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Column(
+              children: [
+                // Container(
+                //   margin: EdgeInsets.fromLTRB(5.0, 15.0, 25.0, 55.0)
+                // ),
+                // SizedBox(
+                //   height: 76),
+                Padding(padding: EdgeInsets.only(top: 20)),
+                CircleAvatar(
+                    backgroundImage: AssetImage('ass/batman.jpg'),
+                    radius: 50,),
+                Padding(padding: EdgeInsets.only(top: 20)),
+                Text('Danny Phantom', style: TextStyle(
+                  fontSize: 24,
+                  fontFamily: 'Arial'
+                )),
+                Row(
+                  children: [
+                    Icon(Icons.mail_outline, size: 24),
+                    Text('azat@mail.ru')
+                  ],
+                ),
+                Padding(padding: EdgeInsets.only(top: 10)),
+                Text('Pressed times: $count ')
+              ])])
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.adb),
+        backgroundColor: Colors.blueAccent,
+        onPressed: () {
+          setState(() {
+            count++;
+          });
+        }
+      ),
+    );
+  }
+}
+
+
