@@ -6,7 +6,7 @@ void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatefulWidget {
+class MyApp extends StatefulWidget {          // Stateful widget needed for floating button
   @override
   State<StatefulWidget> createState() {
     return _Mystate();
